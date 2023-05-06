@@ -1,0 +1,15 @@
+{
+	"name": "AlexTest",
+	"properties": {
+		"description": "test",
+		"configs": {
+			"test": "a"
+		},
+		"created": "2023-05-05T01:29:58.491Z",
+		"createdBy": "wu.guanglie@oe.21vianet.com",
+		"annotations": [],
+		"configMergeRule": {
+			"artifact.currentOperation.test": "replace"
+		}
+	}
+}
