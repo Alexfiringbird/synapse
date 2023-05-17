@@ -2,8 +2,11 @@
 	"name": "DelimitedText2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "alexsynapse0504-WorkspaceDefaultStorage",
-			"type": "LinkedServiceReference"
+			"referenceName": "alexgen2",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DestContainer": "databrickgen2"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
