@@ -148,6 +148,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"folderPath": "Adfsink",
 						"fileSystem": "databrickgen2"
 					},
 					"columnDelimiter": ",",
@@ -454,7 +455,7 @@
 			"location": "chinanorth3"
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/alextest')]",
+			"name": "[concat(parameters('workspaceName'), '/testalex')]",
 			"type": "Microsoft.Synapse/workspaces/sqlPools",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
