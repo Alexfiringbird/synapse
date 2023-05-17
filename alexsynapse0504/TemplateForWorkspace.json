@@ -7,10 +7,18 @@
 			"metadata": "工作区名称",
 			"defaultValue": "alexsynapse0504"
 		},
+		"alexgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "“alexgen2”的“accountKey”的安全字符串"
+		},
 		"alexsynapse0504-WorkspaceDefaultSqlServer_connectionString": {
 			"type": "secureString",
 			"metadata": "“alexsynapse0504-WorkspaceDefaultSqlServer”的“connectionString”的安全字符串",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:alexsynapse0504.sql.azuresynapse.azure.cn,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"alexgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://alexgen2.dfs.core.chinacloudapi.cn/"
 		},
 		"alexsynapse0504-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"type": "string",
@@ -140,8 +148,11 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "alexsynapse0504-WorkspaceDefaultStorage",
-					"type": "LinkedServiceReference"
+					"referenceName": "alexgen2",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DestContainer": "databrickgen2"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -195,7 +206,36 @@
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('workspaceId'), '/linkedServices/alexsynapse0504-WorkspaceDefaultStorage')]"
+				"[concat(variables('workspaceId'), '/linkedServices/alexgen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/alexgen2')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"DestContainer": {
+						"type": "string",
+						"defaultValue": "databrickgen2"
+					}
+				},
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('alexgen2_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('alexgen2_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
 			]
 		},
 		{
