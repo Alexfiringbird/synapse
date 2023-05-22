@@ -5,9 +5,6 @@
 		"workspaceName": {
 			"value": "alexsynapse0504"
 		},
-		"alexgen2_accountKey": {
-			"value": ""
-		},
 		"alexsynapse0504-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:alexsynapse0504.sql.azuresynapse.azure.cn,1433;Initial Catalog=@{linkedService().DBName}"
 		},
